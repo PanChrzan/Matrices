@@ -7,7 +7,7 @@ class Matrix
 public:
     Matrix(unsigned int rows, unsigned int columns) : _rows(rows), _columns(columns)
     {
-        _data = new std::vector<float>(_rows * _columns, 0);
+        _data = new std::vector<T>(_rows * _columns, 0);
     }
     unsigned int getSize()
     {
