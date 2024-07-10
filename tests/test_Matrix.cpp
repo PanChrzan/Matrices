@@ -15,13 +15,13 @@ TEST(Matrix__Test, CheckVectorSize)
 
 TEST(Matrix__Test, CallOperatorOverload)
 {
-    //GIVEN
-    Matrix<float> cut(3,3);
+    // GIVEN
+    Matrix<float> cut(3, 3);
     float expected = 1.1;
-    //WHEN
+    // WHEN
     cut(1, 1) = 1.1;
-    //THEN
-    ASSERT_EQ(expected, cut(1,1));
+    // THEN
+    ASSERT_EQ(expected, cut(1, 1));
 }
 
 TEST(Matrix__Test, ExpectWrongDimensionsThrow)
@@ -31,8 +31,7 @@ TEST(Matrix__Test, ExpectWrongDimensionsThrow)
     // WHEN
 
     // THEN
-    EXPECT_THROW
-    ({
+    EXPECT_THROW({
         try
         {
             cut_1 + cut_2;
@@ -40,8 +39,7 @@ TEST(Matrix__Test, ExpectWrongDimensionsThrow)
         catch(const WrongDimensionsError& err)
         {
             throw;
-        }
-    }, WrongDimensionsError);
+        } }, WrongDimensionsError);
 }
 
 TEST(Matrix__Test, AddingTwoMatrices)
@@ -49,21 +47,21 @@ TEST(Matrix__Test, AddingTwoMatrices)
     // GIVEN
     const int SIZE = 2;
     Matrix<int> mat_left(SIZE, SIZE), mat_right(SIZE, SIZE), expected(SIZE, SIZE);
-    for(unsigned int i=1; i<=SIZE; i++)
+    for (unsigned int i = 1; i <= SIZE; i++)
     {
-        for(unsigned int j=1; j<=SIZE; j++)
+        for (unsigned int j = 1; j <= SIZE; j++)
         {
             mat_left(i, j) = 1;
             mat_right(i, j) = 2;
             expected(i, j) = 3;
         }
     }
-    //WHEN
+    // WHEN
     Matrix<int> ret = mat_left + mat_right;
-    //THEN
-    for(unsigned int i=1; i<=SIZE; i++)
+    // THEN
+    for (unsigned int i = 1; i <= SIZE; i++)
     {
-        for(unsigned int j=1; j<=SIZE; j++)
+        for (unsigned int j = 1; j <= SIZE; j++)
         {
             ASSERT_EQ(expected(i, j), ret(i, j));
         }
